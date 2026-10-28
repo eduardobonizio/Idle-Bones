@@ -37,6 +37,9 @@ data class GameState(
     // Habilidade ativa no momento (para cálculo offline e loop de coleta)
     val activeSkill: String? = null,
 
+    // Recurso ou receita de skill sendo ativamente coletada/fabricada
+    val activeRecipeId: String? = null,
+
     // Ouro acumulado
     val gold: Long = 0L,
 
@@ -58,7 +61,21 @@ data class GameState(
     val monsterCombatHp: Long? = null,
 
     // ID do monstro ao qual o monsterCombatHp se refere (evita HP "vazado" entre monstros)
-    val combatMonsterId: String? = null
+    val combatMonsterId: String? = null,
+
+    // Dano do último turno de combate (inclusive se 0)
+    val lastDamageToMonster: Int? = null,
+    val lastDamageToPlayer: Int? = null,
+
+    // Zonas em que o boss foi derrotado para progressão de mapas
+    val defeatedBossZoneIds: Set<String> = emptySet(),
+
+    // Porcentagem de HP para comer comida automaticamente durante combate (default 70%)
+    val autoEatHpPercentage: Int = 70,
+
+    // Tracking de sessão de batalha
+    val sessionMonstersKilled: Int = 0,
+    val sessionLoot: Map<String, Int> = emptyMap()
 )
 
 /**

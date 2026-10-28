@@ -17,5 +17,6 @@ enum class EquipmentSlot {
     RING_1,
     RING_2,
     WEAPON,
-    SHIELD
+    SHIELD,
+    AMMO
 }

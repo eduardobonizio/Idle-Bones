@@ -33,8 +33,8 @@ import com.idlebones.game.ui.theme.GameColors
 /** Abas do jogo. */
 enum class GameTab(val title: String, val icon: String) {
     COMBAT("Batalha", "\u2694"),
-    PROFESSIONS("Of\u00edcios", "\u26CF"),
-    INVENTORY("Ba\u00fa", "\uD83C\uDF92"),
+    SKILLS("Skills", "\u26CF"),
+    INVENTORY("Mochila", "\uD83C\uDF92"),
     CHARACTER("Her\u00f3i", "\uD83D\uDEE1"),
     CITY("Cidade", "\uD83C\uDFF0")
 }
@@ -56,7 +56,7 @@ fun MainGameScreen(gameEngine: GameEngine) {
         ) {
             when (selectedTab) {
                 GameTab.COMBAT -> CombatScreen(gameEngine)
-                GameTab.PROFESSIONS -> ProfessionsScreen(gameEngine)
+                GameTab.SKILLS -> SkillsScreen(gameEngine)
                 GameTab.INVENTORY -> InventoryScreen(gameEngine)
                 GameTab.CHARACTER -> CharacterScreen(gameEngine)
                 GameTab.CITY -> CityScreen(gameEngine)

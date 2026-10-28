@@ -17,10 +17,7 @@ app/build/
 # ------------------------------------------------------------
 local.properties
 .navigation/
-.idea/workspace.xml
-.idea/libraries/
-.idea/caches/
-.idea/modules.xml
+.idea/
 
 # ------------------------------------------------------------
 # Capturas de sistema operacional

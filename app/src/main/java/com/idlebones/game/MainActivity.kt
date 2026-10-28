@@ -39,7 +39,20 @@ class MainActivity : ComponentActivity() {
 
     override fun onPause() {
         super.onPause()
+        // Registra o timestamp real da pausa e salva (RAM + disco).
         gameEngine.forceSave()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        // Grava o timestamp tambem ao ir para background / tela travada.
+        gameEngine.forceSave()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Ao voltar sem recriar o processo, aplica o catch-up offline.
+        gameEngine.resumeFromBackground()
     }
 
     override fun onDestroy() {

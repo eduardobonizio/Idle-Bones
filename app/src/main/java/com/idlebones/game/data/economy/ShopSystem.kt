@@ -161,7 +161,7 @@ object ShopSystem {
         when (shop) {
             ShopType.BLACKSMITH -> {
                 return GameDatabase.items
-                    .filter { it.category == ItemCategory.SWORDS || it.category == ItemCategory.HEAVY_ARMOR }
+                    .filter { it.slot != null }
                     .filter { it.tier in tiers }
                     .sortedWith(compareBy({ it.tier.ordinal }, { it.category.name }, { it.name }))
                     .map { offerOf(it) }

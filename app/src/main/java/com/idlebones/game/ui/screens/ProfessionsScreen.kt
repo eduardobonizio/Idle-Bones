@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.idlebones.game.data.generator.GameDatabase
 import com.idlebones.game.data.generator.GameDatabaseGenerator
 import com.idlebones.game.data.models.SkillType
 import com.idlebones.game.data.save.GameState
@@ -48,6 +49,9 @@ private val GATHERING_SKILLS = listOf(
 @Composable
 fun ProfessionsScreen(gameEngine: GameEngine) {
     val state by gameEngine.gameState.collectAsState()
+    val activeRecipe = remember(state.activeRecipeId) {
+        state.activeRecipeId?.let { id -> GameDatabase.skillRecipes.firstOrNull { it.id == id } }
+    }
 
     Column(
         modifier = Modifier
@@ -55,15 +59,17 @@ fun ProfessionsScreen(gameEngine: GameEngine) {
             .padding(16.dp)
     ) {
         Text(
-            text = "Profiss\u00f5es",
+            text = "Profissões",
             color = GameColors.Gold,
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold
         )
         Text(
-            text = if (state.activeSkill != null)
-                "Coletando: ${skillDisplayName(SkillType.valueOf(state.activeSkill!!))}"
-            else "Nenhuma atividade em andamento",
+            text = when {
+                activeRecipe != null -> "Atividade: ${activeRecipe.name} (${activeRecipe.skillType.name})"
+                state.activeSkill != null -> "Coletando: ${skillDisplayName(SkillType.valueOf(state.activeSkill!!))}"
+                else -> "Nenhuma atividade em andamento"
+            },
             color = GameColors.TextSecondary,
             fontSize = 13.sp
         )

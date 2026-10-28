@@ -46,3 +46,23 @@ internal fun levelXp(stats: PlayerStatsData, skill: SkillType): Pair<Int, Long> 
     SkillType.RANGED -> stats.rangedLevel to stats.rangedXp
     SkillType.MAGIC -> stats.magicLevel to stats.magicXp
 }
+
+/** Ícone temático para cada SkillType. */
+internal fun skillIcon(skill: SkillType): String = when (skill) {
+    SkillType.ATTACK -> "⚔️"
+    SkillType.STRENGTH -> "💪"
+    SkillType.DEFENSE -> "🛡️"
+    SkillType.RANGED -> "🏹"
+    SkillType.MAGIC -> "🔮"
+    SkillType.PRAYER -> "✨"
+    SkillType.AGILITY -> "⚡"
+    SkillType.MINING -> "⛏️"
+    SkillType.WOODCUTTING -> "🪓"
+    SkillType.FISHING -> "🎣"
+    SkillType.COOKING -> "🍳"
+    SkillType.SMITHING -> "🔨"
+    SkillType.RUNECRAFTING -> "📜"
+    SkillType.FLETCHING -> "🎯"
+    SkillType.FIREMAKING -> "🔥"
+    SkillType.ALCHEMY -> "🧪"
+}
